@@ -1,10 +1,20 @@
 <template>
   <div id="app">
-    <div class="echart-demo" ref="gaugeChart" style="width:100%;height:435px;"></div>
+    <div class="echart-demo" ref="gaugeChart"></div>
     <div style="display:flex;">
-      <div class="echart-demo" ref="barChart" style="width:50%;height:435px;"></div>
-      <div class="echart-demo" ref="lineChart" style="width:50%;height:435px;"></div>
+      <div style="width:50%;padding: 0 20px;">
+        <div class="echart-demo-title">营业收入与营业成本</div>
+        <div class="echart-demo border" ref="barChart"></div>
+      </div>
+      <div style="width:50%;padding: 0 20px;">
+        <div class="echart-demo-title">静资产收益率</div>
+        <div class="echart-demo border" ref="lineChart"></div>
+      </div>
     </div>
+    <!-- <div style="display:flex;">
+      <div class="echart-demo" ref="barChart"></div>
+      <div class="echart-demo" ref="lineChart"></div>
+    </div> -->
   </div>
 </template>
 
@@ -25,11 +35,6 @@ export default {
       this.gaugeChart.setOption(gaugeOption)
       this.barChart.setOption(barOption)
       this.lineChart.setOption(lineOption)
-
-      // setInterval(function () {
-      //   echartOption.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0
-      //   chart.setOption(echartOption, true)
-      // }, 2000)
     }
   },
   mounted () {
@@ -45,10 +50,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   /* text-align: center; */
-  /* margin-top: 60px; */
+  margin-bottom: 60px;
 }
-.echart-demo{
+.echart-demo {
   width: 100%;
   height: 435px;
+  &-title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+}
+.border {
+  border: 1px solid rgb(205, 208, 217);
 }
 </style>

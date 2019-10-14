@@ -1,9 +1,21 @@
 
 let option = {
-  legend: {
-    data: ['静资产收益率', '行业静资产收益率']
+  tooltip: {
+    trigger: 'axis',
+    type: 'cross',
+    label: {
+      backgroundColor: '#6a7985'
+    }
   },
   color: ['rgb(79,129,189)', 'rgb(192,80,78)'],
+  legend: {
+    top: '5%',
+    data: ['静资产收益率', '行业静资产收益率']
+  },
+  grid: {
+    top: '15%',
+    bottom: 70
+  },
   xAxis: [
     {
       type: 'category',

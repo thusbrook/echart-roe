@@ -7,7 +7,12 @@ let option = {
     }
   },
   legend: {
+    top: '5%',
     data: ['营业收入', '营业成本']
+  },
+  grid: {
+    top: '15%',
+    bottom: 70
   },
   calculable: true,
   xAxis: [
