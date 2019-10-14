@@ -56,7 +56,6 @@ export default {
       let newOption = setROE(val)
       this.lineChart.setOption(newOption)
     }
-
   },
   mounted () {
     this.initChart()

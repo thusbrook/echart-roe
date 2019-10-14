@@ -82,7 +82,7 @@ export default option
  *  设置风险系数
  * @param {number} coefficientValue 风险系数
  */
-export let setCoefficient = function (coefficientValue) {
+export let setCoefficient = function (coefficientValue = COE_MIN) {
   if (coefficientValue < COE_MIN || coefficientValue > COE_MAX) {
     throw Error('please check coefficient value range')
   }
@@ -94,8 +94,8 @@ export let setCoefficient = function (coefficientValue) {
  *  设置风险系数分位数
  * @param {number} percentValue 风险系数分位数
  */
-export let setPercent = function (coefficientValue, percentValue) {
-  if (percentValue < 0 || coefficientValue > 100) {
+export let setPercent = function (percentValue = 0) {
+  if (percentValue < 0 || percentValue > 100) {
     throw Error('please check percent value range')
   }
   option.series[1].data[0].value = percentValue

@@ -45,10 +45,10 @@ let option = {
 
 export default option
 
-export let setIncomeAndCost = function (dateArr, incomeArr, costArr) {
+export let setIncomeAndCost = function (date, income, cost) {
   // TODO param check
-  option.xAxis.data = dateArr
-  option.series[0].data = incomeArr
-  option.series[1].data = costArr
+  option.xAxis.data = date
+  option.series[0].data = income
+  option.series[1].data = cost
   return option
 }

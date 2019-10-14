@@ -47,10 +47,10 @@ let option = {
 
 export default option
 
-export let setROE = function (dateArr, ROEArr, industryROEArr) {
+export let setROE = function (date, roe, industryRoe) {
   // TODO param check
-  option.xAxis.data = dateArr
-  option.series[0].data = ROEArr
-  option.series[1].data = industryROEArr
+  option.xAxis.data = date
+  option.series[0].data = roe
+  option.series[1].data = industryRoe
   return option
 }
