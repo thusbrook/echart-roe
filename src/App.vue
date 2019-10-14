@@ -1,37 +1,39 @@
 <template>
   <div id="app">
-    <div>echart</div>
-    <div class="echart-demo" refs="chart" style="width:100%;height:500px;"></div>
+    <div class="echart-demo" ref="gaugeChart" style="width:100%;height:435px;"></div>
+    <div style="display:flex;">
+      <div class="echart-demo" ref="barChart" style="width:50%;height:435px;"></div>
+      <div class="echart-demo" ref="lineChart" style="width:50%;height:435px;"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import echart from 'echarts'
-import echartOption from '@/chartOptions/gauge'
-console.log(echart)
+import gaugeOption from '@/chartOptions/gauge'
+import barOption from '@/chartOptions/bar'
+import lineOption from '@/chartOptions/line'
 export default {
   name: 'app',
   components: {
   },
   methods: {
     initChart () {
-      let echartDom = this.$refs.chart
-      if (!echartDom) {
-        console.warn('没有找到可渲染的chart-body')
-        return
-      }
-      this.chart = echart.init(echartDom)
-      let chart = this.chart
-      console.log(this.chart)
-      chart.setOption(echartOption)
-      setInterval(function () {
-        echartOption.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0
-        chart.setOption(echartOption, true)
-      }, 2000)
-    },
-    mounted () {
-      this.initChart()
+      this.gaugeChart = echart.init(this.$refs.gaugeChart)
+      this.barChart = echart.init(this.$refs.barChart)
+      this.lineChart = echart.init(this.$refs.lineChart)
+      this.gaugeChart.setOption(gaugeOption)
+      this.barChart.setOption(barOption)
+      this.lineChart.setOption(lineOption)
+
+      // setInterval(function () {
+      //   echartOption.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0
+      //   chart.setOption(echartOption, true)
+      // }, 2000)
     }
+  },
+  mounted () {
+    this.initChart()
   }
 }
 </script>
