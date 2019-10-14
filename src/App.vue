@@ -7,7 +7,7 @@
         <div class="echart-demo border" ref="barChart"></div>
       </div>
       <div style="width:50%;padding: 0 20px;">
-        <div class="echart-demo-title">静资产收益率</div>
+        <div class="echart-demo-title">净资产收益率</div>
         <div class="echart-demo border" ref="lineChart"></div>
       </div>
     </div>
@@ -20,9 +20,9 @@
 
 <script>
 import echart from 'echarts'
-import gaugeOption from '@/chartOptions/gauge'
-import barOption from '@/chartOptions/bar'
-import lineOption from '@/chartOptions/line'
+import gaugeOption, { setCoefficient, setPercent } from '@/chartOptions/gauge'
+import barOption, { setIncomeAndCost } from '@/chartOptions/bar'
+import lineOption, { setROE } from '@/chartOptions/line'
 export default {
   name: 'app',
   components: {
@@ -35,10 +35,32 @@ export default {
       this.gaugeChart.setOption(gaugeOption)
       this.barChart.setOption(barOption)
       this.lineChart.setOption(lineOption)
+    },
+    // 设置风险系数
+    setCoefficient (val) {
+      let newOption = setCoefficient(val)
+      this.gaugeChart.setOption(newOption)
+    },
+    // 设置风险系数分位数
+    setPercent (val) {
+      let newOption = setPercent(val)
+      this.gaugeChart.setOption(newOption)
+    },
+    // 设置营业收入与营业成本
+    setIncomeAndCost (val) {
+      let newOption = setIncomeAndCost(val)
+      this.barChart.setOption(newOption)
+    },
+    // 设置静资产收益率
+    setROE (val) {
+      let newOption = setROE(val)
+      this.lineChart.setOption(newOption)
     }
+
   },
   mounted () {
     this.initChart()
+    this.setCoefficient()
   }
 }
 </script>

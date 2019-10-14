@@ -1,3 +1,5 @@
+const COE_MAX = 10.98
+const COE_MIN = -19.82
 let option = {
   series: [
     {
@@ -13,8 +15,8 @@ let option = {
         show: true,
         offsetCenter: [0, '-120%']
       },
-      min: -19.82,
-      max: 10.98,
+      min: COE_MIN,
+      max: COE_MAX,
       axisLine: { // 坐标轴线
         lineStyle: { // 属性lineStyle控制线条样式
           width: 20,
@@ -24,7 +26,7 @@ let option = {
       splitLine: { // 分隔线
         length: 20 // 属性length控制线长
       },
-      data: [{ value: 5, name: '风险系数' }]
+      data: [{ value: COE_MIN, name: '风险系数' }]
     },
     {
       name: '风险系数分位数',
@@ -69,9 +71,33 @@ let option = {
       splitLine: { // 分隔线
         length: 20 // 属性length控制线长
       },
-      data: [{ value: 3, name: '风险系数分位数' }]
+      data: [{ value: 0, name: '风险系数分位数' }]
     }
   ]
 }
 
 export default option
+
+/**
+ *  设置风险系数
+ * @param {number} coefficientValue 风险系数
+ */
+export let setCoefficient = function (coefficientValue) {
+  if (coefficientValue < COE_MIN || coefficientValue > COE_MAX) {
+    throw Error('please check coefficient value range')
+  }
+  option.series[0].data[0].value = coefficientValue
+  return option
+}
+
+/**
+ *  设置风险系数分位数
+ * @param {number} percentValue 风险系数分位数
+ */
+export let setPercent = function (coefficientValue, percentValue) {
+  if (percentValue < 0 || coefficientValue > 100) {
+    throw Error('please check percent value range')
+  }
+  option.series[1].data[0].value = percentValue
+  return option
+}

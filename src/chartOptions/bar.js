@@ -15,14 +15,12 @@ let option = {
     bottom: 70
   },
   calculable: true,
-  xAxis: [
-    {
-      type: 'category',
-      axisTick: { show: false },
-      axisLabel: { rotate: 45 },
-      data: ['2019-01-02', '2019-01-03', '2019-01-04', '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08']
-    }
-  ],
+  xAxis: {
+    type: 'category',
+    axisTick: { show: false },
+    axisLabel: { rotate: 45 },
+    data: ['2019-01-02', '2019-01-03', '2019-01-04', '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08']
+  },
   yAxis: [
     {
       type: 'value',
@@ -46,3 +44,11 @@ let option = {
 }
 
 export default option
+
+export let setIncomeAndCost = function (dateArr, incomeArr, costArr) {
+  // TODO param check
+  option.xAxis.data = dateArr
+  option.series[0].data = incomeArr
+  option.series[1].data = costArr
+  return option
+}

@@ -31,13 +31,13 @@ let option = {
   },
   series: [
     {
-      name: '静资产收益率',
+      name: '净资产收益率',
       type: 'line',
       smooth: true,
       data: [320, 332, 50, 334, 390, 334, 390]
     },
     {
-      name: '行业静资产收益率',
+      name: '行业净资产收益率',
       type: 'line',
       smooth: true,
       data: [220, 182, 191, 234, 290, 380, 290]
@@ -46,3 +46,11 @@ let option = {
 }
 
 export default option
+
+export let setROE = function (dateArr, ROEArr, industryROEArr) {
+  // TODO param check
+  option.xAxis.data = dateArr
+  option.series[0].data = ROEArr
+  option.series[1].data = industryROEArr
+  return option
+}
