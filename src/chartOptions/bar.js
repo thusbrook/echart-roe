@@ -1,75 +1,41 @@
 let option = {
+  color: ['rgb(79,129,189)', 'rgb(192,80,78)'],
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['营业收入', '营业成本']
+  },
+  calculable: true,
+  xAxis: [
+    {
+      type: 'category',
+      axisTick: { show: false },
+      axisLabel: { rotate: 45 },
+      data: ['2019-01-02', '2019-01-03', '2019-01-04', '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLine: { show: false },
+      axisTick: { show: false }
+    }
+  ],
   series: [
     {
-      name: '风险系数',
-      center: ['30%', '50%'],
-      radius: '60%',
-      type: 'gauge',
-      detail: {
-        fontSize: 18,
-        fontFamily: 'Microsoft YaHei'
-      },
-      title: {
-        show: true,
-        offsetCenter: [0, '-120%']
-      },
-      min: -19.82,
-      max: 10.98,
-      axisLine: { // 坐标轴线
-        lineStyle: { // 属性lineStyle控制线条样式
-          width: 20,
-          color: [[1, 'rgba(65,225,174,1)']]
-        }
-      },
-      splitLine: { // 分隔线
-        length: 20 // 属性length控制线长
-      },
-      data: [{ value: 5, name: '风险系数' }]
+      name: '营业收入',
+      type: 'bar',
+      // barGap: '5%',
+      data: [320, 332, 301, 334, 390, 334, 390]
     },
     {
-      name: '风险系数分位数',
-      center: ['70%', '50%'],
-      radius: '60%',
-      type: 'gauge',
-      detail: {
-        offsetCenter: [0, '55%'],
-        formatter (value) {
-          let degree = '高风险'
-          if (value <= 20) {
-            degree = '高风险'
-          }
-          if (value > 20 && value <= 40) {
-            degree = '中风险'
-          }
-          if (value > 40 && value <= 100) {
-            degree = '低风险'
-          }
-          return value.toFixed(2) + '%' + '\n' + '\n' + degree
-        },
-        fontSize: 18,
-        fontFamily: 'Microsoft YaHei'
-      },
-      title: {
-        show: true,
-        offsetCenter: [0, '-120%']
-      },
-      axisLine: { // 坐标轴线
-        lineStyle: { // 属性lineStyle控制线条样式
-          width: 20,
-          color: [
-            [0.25, 'rgba(193,0,41,1)'],
-            [0.4, 'rgba(17,82,214,1)'],
-            [1, 'rgba(65,225,174,1)']
-          ]
-        }
-      },
-      axisLabel: {
-        formatter: '{value} %'
-      },
-      splitLine: { // 分隔线
-        length: 20 // 属性length控制线长
-      },
-      data: [{ value: 3, name: '风险系数分位数' }]
+      name: '营业成本',
+      type: 'bar',
+      data: [220, 182, 191, 234, 290, 234, 290]
     }
   ]
 }
