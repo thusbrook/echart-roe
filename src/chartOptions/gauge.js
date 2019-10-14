@@ -1,4 +1,4 @@
-let gaugeOption = {
+let option = {
   series: [
     {
       name: '风险系数',
@@ -74,4 +74,4 @@ let gaugeOption = {
   ]
 }
 
-export default gaugeOption
+export default option
