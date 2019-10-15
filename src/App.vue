@@ -47,19 +47,23 @@ export default {
       this.gaugeChart.setOption(newOption)
     },
     // 设置营业收入与营业成本
-    setIncomeAndCost (val) {
-      let newOption = setIncomeAndCost(val)
+    setIncomeAndCost (date, income, cost) {
+      let newOption = setIncomeAndCost(date, income, cost)
       this.barChart.setOption(newOption)
     },
     // 设置静资产收益率
-    setROE (val) {
-      let newOption = setROE(val)
+    setROE (date, roe, industryRoe) {
+      let newOption = setROE(date, roe, industryRoe)
       this.lineChart.setOption(newOption)
     }
   },
   mounted () {
     this.initChart()
-    this.setCoefficient()
+    this.setIncomeAndCost(
+      ['2019-01-02', '2019-01-03', '2019-01-04', '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08'],
+      [320, 332, 301, 33400, 390, 334, 390],
+      [320, 332, 301, 3340000, 390, 334, 390]
+    )
   }
 }
 </script>

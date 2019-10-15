@@ -12,7 +12,8 @@ let option = {
   },
   grid: {
     top: '15%',
-    bottom: 70
+    bottom: 70,
+    left: 70
   },
   calculable: true,
   xAxis: {
@@ -33,7 +34,7 @@ let option = {
       name: '营业收入',
       type: 'bar',
       // barGap: '5%',
-      data: [320, 332, 301, 334, 390, 334, 390]
+      data: [320, 332, 301, 33400, 390, 334, 390]
     },
     {
       name: '营业成本',
@@ -45,8 +46,14 @@ let option = {
 
 export default option
 
-export let setIncomeAndCost = function (date, income, cost) {
+export let setIncomeAndCost = function (date = [], income = [], cost = []) {
   // TODO param check
+  let all = income.concat(cost)
+  let maxNum = Math.max.apply(null, all)
+  let labelLength = String(maxNum).length
+  if (labelLength > 5) {
+    option.grid.left = 70 + (labelLength - 5) * 10
+  }
   option.xAxis.data = date
   option.series[0].data = income
   option.series[1].data = cost
